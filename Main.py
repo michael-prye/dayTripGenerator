@@ -12,6 +12,7 @@ def get_list_len(list):
 def get_random_element(list, list_len):
     random_index = random.randrange(0,list_len)
     return list[random_index]
+# set of functions to generate trip
 def generate_destination():
     destination = get_random_element(destinations, get_list_len(destinations))
     return destination
@@ -24,6 +25,7 @@ def generate_restaurant():
 def generate_entertainment():
     entertainment = get_random_element(entertainments, get_list_len(entertainments))
     return entertainment
+# set of function to change the trip
 def change_destination(trip_list):
     new_destination = trip_list[0]
     while new_destination == trip_list[0]:
@@ -119,7 +121,6 @@ def change_trip():
                     user_confirm = True
                     print("\n")
                     print_trip(final_trip)
-
 def run():
     print("Wellcome to the Day Trip Generator")
     print_trip(final_trip)
