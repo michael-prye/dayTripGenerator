@@ -1,5 +1,4 @@
 #Day Trip Generator
-from operator import truediv
 import random
 
 destinations = ["Hogwarts", "Tatooine", "Gallifrey", "Middle-earth"]
@@ -57,12 +56,17 @@ def print_trip(trip):
 def user_satisfied():
     user_input = input("Are you happy with this trip? Enter y/n: ")
     user_input = user_input.lower()
+    while user_input != 'y' and user_input != 'n':
+        user_input = input("Are you happy with this trip? Enter y/n: ")
+        user_input = user_input.lower()
     if user_input == 'y':
         return True
     else:
         return False
 def change_trip():
     user_input = int(input("What would you like to change 1. destination 2. transportation 3. restaurant 4. entertainment: "))
+    while user_input != 1 and user_input != 2 and user_input != 3 and user_input != 4:
+        user_input = int(input("Please enter a valid number: "))
     if user_input == 1:
             user_confirm = False
             while user_confirm == False:
@@ -74,6 +78,8 @@ def change_trip():
                     final_trip.pop(0)
                     final_trip.insert(0, destination)
                     user_confirm = True
+                    print("\n")
+                    print_trip(final_trip)
     elif user_input == 2:
             user_confirm = False
             while user_confirm == False:
@@ -85,6 +91,8 @@ def change_trip():
                     final_trip.pop(1)
                     final_trip.insert(1, transportation)
                     user_confirm = True
+                    print("\n")
+                    print_trip(final_trip)
     elif user_input == 3:
             user_confirm = False
             while user_confirm == False:
@@ -96,6 +104,8 @@ def change_trip():
                     final_trip.pop(2)
                     final_trip.insert(2, restaurant)
                     user_confirm = True
+                    print("\n")
+                    print_trip(final_trip)
     elif user_input == 4:
             user_confirm = False
             while user_confirm == False:
@@ -107,13 +117,15 @@ def change_trip():
                     final_trip.pop(3)
                     final_trip.insert(3, entertainment)
                     user_confirm = True
+                    print("\n")
+                    print_trip(final_trip)
 
 def run():
     print("Wellcome to the Day Trip Generator")
     print_trip(final_trip)
     while user_satisfied() == False:
         change_trip()
-    print("\nYou have selected your final trip:")
+    print("\nYou have selected your final trip!:")
     print_trip(final_trip)
 final_trip = create_trip()
 run()
